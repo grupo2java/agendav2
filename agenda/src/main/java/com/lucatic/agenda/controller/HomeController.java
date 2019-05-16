@@ -34,10 +34,6 @@ public class HomeController {
 		model.addAttribute("personas", persoService.list());
 
 		return "listaContactos";
-		/**
-		 * model.addAttribute("PersonaList", persoService.list());
-		return "UserList"
-		 */
 	}
 	
 
@@ -55,20 +51,19 @@ public class HomeController {
 		return "formContacto";		
 	}
 
-	/*@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	
 	public ModelAndView saveUser(@RequestParam(value="nombre",required=false) String nombre ,
 			@RequestParam(value="apellido1",required=false) String apellido1,
 			@RequestParam(value="apellido2",required=false) String apellido2,
 			@RequestParam(value="dni",required=false) String dni,
-			@RequestParam(value ="nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime fecha
-			) {
+			@RequestParam(value ="nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime fecha) {
 	
 		persoService.add(new Persona());
 		return new ModelAndView("redirect:/");
+	}
 		
 		
-		*/
 	
 	
 	

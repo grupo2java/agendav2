@@ -2,8 +2,8 @@ package com.lucatic.agenda.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 
 
 /**
@@ -24,8 +24,8 @@ public class Persona implements Serializable {
 
 	private String dni;
 
-	@Temporal(TemporalType.DATE)
-	private Date fechanacimiento;
+	
+	private LocalDate fechanacimiento;
 
 	private String nombre;
 
@@ -39,6 +39,23 @@ public class Persona implements Serializable {
 
 	public Persona() {
 	}
+	
+	
+
+	public Persona(int idpersona, String apellido1, String apellido2, String dni, LocalDate fechanacimiento, String nombre,
+			List<Direccion> direccions, List<Telefono> telefonos) {
+		super();
+		this.idpersona = idpersona;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.dni = dni;
+		this.fechanacimiento = fechanacimiento;
+		this.nombre = nombre;
+		this.direccions = direccions;
+		this.telefonos = telefonos;
+	}
+
+
 
 	public int getIdpersona() {
 		return this.idpersona;
@@ -72,11 +89,11 @@ public class Persona implements Serializable {
 		this.dni = dni;
 	}
 
-	public Date getFechanacimiento() {
+	public LocalDate getFechanacimiento() {
 		return this.fechanacimiento;
 	}
 
-	public void setFechanacimiento(Date fechanacimiento) {
+	public void setFechanacimiento(LocalDate fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
 
