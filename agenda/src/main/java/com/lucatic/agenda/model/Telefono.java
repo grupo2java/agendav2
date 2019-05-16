@@ -1,36 +1,33 @@
 package com.lucatic.agenda.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+
 
 /**
+ * The persistent class for the telefono database table.
  * 
- * @author grupo2Lucatic
- * 
- * @version 1.0
- * 
- * 
- *
  */
-
-
 @Entity
-@Table(name="telefono")
-public class Telefono {
-	
+@NamedQuery(name="Telefono.findAll", query="SELECT t FROM Telefono t")
+public class Telefono implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idtelefono;
+
 	private String telefono;
-	
-	public Telefono() {}
+
+	//bi-directional many-to-one association to Persona
+	@ManyToOne
+	@JoinColumn(name="idpersona")
+	private Persona persona;
+
+	public Telefono() {
+	}
 
 	public int getIdtelefono() {
-		return idtelefono;
+		return this.idtelefono;
 	}
 
 	public void setIdtelefono(int idtelefono) {
@@ -38,16 +35,19 @@ public class Telefono {
 	}
 
 	public String getTelefono() {
-		return telefono;
+		return this.telefono;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	@Override
-	public String toString() {
-		return "Telefono [idtelefono=" + idtelefono + ", telefono=" + telefono + "]";
+	public Persona getPersona() {
+		return this.persona;
 	}
-	
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
 }

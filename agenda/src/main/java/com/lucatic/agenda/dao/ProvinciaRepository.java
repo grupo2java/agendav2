@@ -1,11 +1,9 @@
 package com.lucatic.agenda.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.lucatic.agenda.model.Provincia;
 
-@Repository
-public interface ProvinciaRepository extends JpaRepository<Provincia,Integer>, ProvinciaRepositoryCustom{
+public interface ProvinciaRepository extends CrudRepository<Provincia, Integer>{
 
 }
