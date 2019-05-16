@@ -55,7 +55,7 @@ public class HomeController {
 		return "formContacto";		
 	}
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/save", method = RequestMethod.POST)
 	
 	public ModelAndView saveUser(@RequestParam(value="nombre",required=false) String nombre ,
 			@RequestParam(value="apellido1",required=false) String apellido1,
@@ -64,30 +64,13 @@ public class HomeController {
 			@RequestParam(value ="nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime fecha
 			) {
 	
-		persoService.add(new Persona(nombre,apellido1,apellido2,dni,fecha));
+		persoService.add(new Persona());
 		return new ModelAndView("redirect:/");
 		
-		/*
-		 * @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity main(@RequestParam(name = 'dateTime') @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime dateTime) {
-        // ...
- 
-        return ResponseEntity.noContent().build()
-    }
-		 */
-	}
-	/*
-	 *  @RequestMapping(value ="/compruebaLogin",  method = RequestMethod.POST)
-    public String compruebaLogin(@RequestParam(value="user",required=false) String use
-    		 , @RequestParam(value="password",required=false) String pass
-    		 ,Model model
-    		) {
-    		model.addAttribute("usuario",use);
-    		model.addAttribute("contrasenia",pass);
-    		
-        return "holaMundo";
-    }
-	 */
+		
+		*/
+	
+	
 	
 	
 	
