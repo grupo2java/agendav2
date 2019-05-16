@@ -6,6 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+/**
+ * 
+ * @author grupo2Lucatic
+ * 
+ * @version 1.0
+ * 
+ * 
+ *
+ */
 @Entity
 @Table(name="direccion")
 public class Direccion {
