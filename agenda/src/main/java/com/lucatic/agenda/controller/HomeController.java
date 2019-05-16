@@ -1,7 +1,8 @@
 package com.lucatic.agenda.controller;
 
 import java.time.LocalDateTime;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -13,24 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.services.PersonaService;
 
 @Controller
 public class HomeController {
-
+	
+	
 	@Autowired
 	private PersonaService persoService;
-
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
 	@RequestMapping(value = "/" )
 	public String inicio(ModelMap model) {
-		System.out.println("ENTRAMOS EN EL INDEX DEL PROGRAMA");
+		logger.info("--Cargando index--");
 		return "index";
 	}
 	@GetMapping("/listarContactos")
 	public String listaContactos(ModelMap model) {
-		System.out.println("entramos lista de contactos");
+		logger.info("entramos lista de contactos");
 		model.addAttribute("personas", persoService.list());
 		return "listaContactos";
 		/*
@@ -43,13 +45,12 @@ public class HomeController {
 	//ESTO PREGUNTAR SI ES COORRECTO O MEJOR UTILIZAR POSTMAPPING 11MVPARAM PREGUNTAR GRUPO
 	@GetMapping("/volver")
 	public String volverInicio() {
-		System.out.println("volvemos al inicio");
+		logger.info("volvemos al inicio");
 		return "redirect:/";	
 	}
 	
 	@GetMapping("/new")
 	public String newUser(ModelMap model) {
-		
 		model.addAttribute("persona", new Persona());
 		return "formContacto";		
 	}
@@ -65,7 +66,16 @@ public class HomeController {
 	
 		persoService.add(new Persona(nombre,apellido1,apellido2,dni,fecha));
 		return new ModelAndView("redirect:/");
+		}
 		
+	
+	
+	@GetMapping("/delete")
+	public ModelAndView deleteUser(@RequestParam("id") int id) {
+		logger.info("-- en DELETE");
+		persoService.delete(id);
+		return new ModelAndView("redirect:/");		
+	}
 		/*
 		 * @RequestMapping(method = RequestMethod.GET)
     ResponseEntity main(@RequestParam(name = 'dateTime') @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime dateTime) {
@@ -74,7 +84,6 @@ public class HomeController {
         return ResponseEntity.noContent().build()
     }
 		 */
-	}
 	/*
 	 *  @RequestMapping(value ="/compruebaLogin",  method = RequestMethod.POST)
     public String compruebaLogin(@RequestParam(value="user",required=false) String use
