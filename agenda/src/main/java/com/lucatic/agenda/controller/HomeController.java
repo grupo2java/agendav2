@@ -26,15 +26,14 @@ public class HomeController {
 	@RequestMapping(value = "/" )
 	public String inicio(ModelMap model) {
 		System.out.println("ENTRAMOS EN EL INDEX DEL PROGRAMA");
-		return "index"; 
+		return "index";
 	}
 	@GetMapping("/listarContactos")
 	public String listaContactos(ModelMap model) {
 		System.out.println("entramos lista de contactos");
 		model.addAttribute("personas", persoService.list());
-
 		return "listaContactos";
-		/**
+		/*
 		 * model.addAttribute("PersonaList", persoService.list());
 		return "UserList"
 		 */
