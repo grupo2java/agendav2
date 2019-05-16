@@ -39,7 +39,7 @@ public class ProvinciaController {
 	public String enviarProvin(Provincia provincia, RedirectAttributes attributes) {
 		logger.info("Guardando provincia");
 		provinciaRepository.save(provincia);
-		attributes.addFlashAttribute("msg_anadido", "La empresa ha sido añadida");
+		attributes.addFlashAttribute("msg_anadido", "La provincia ha sido añadida");
 		return "redirect:/";
 	}
 	
