@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.services.PersonaService;
 
@@ -77,9 +79,10 @@ public class HomeController {
 	}
 	
 	@GetMapping("/borrar/{id}")
-	public String borrarContacto(@PathVariable("id") Integer id) {
+	public String borrarContacto(@PathVariable("id") Integer id, RedirectAttributes attributes) {
 		
 		persoService.delete(id);
+		attributes.addFlashAttribute("msg_borrado","El contacto ha sido borrado");
 		return "redirect:/";
 	}
 	
