@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +50,7 @@ public class HomeController {
 	public String newUser(ModelMap model) {
 		logger.info("creamos nueva persona");
 		model.addAttribute("persona", new Persona());
+		model.addAttribute("countries", persoService.listaProvincias());
 		return "formContacto";		
 	}
 
@@ -61,6 +63,31 @@ public class HomeController {
 		
 		persoService.add(new Persona());
 		return new ModelAndView("redirect:/");
+	}
+	
+	
+	@GetMapping("/datos/{id}")
+	public String verDetallePersona(@PathVariable("id") int id, ModelMap model) {
+		System.out.println("ENTRAMOS EN LA VISTA DETALLADA");
+		model.addAttribute("personaDetalles", persoService.getEmployeeById(id));
+		model.addAttribute("telefonos", persoService.listaTelefonos(id));
+		model.addAttribute("direcciones", persoService.listaDirecciones(id));
+		
+		return "detallesPersona";
+	}
+	
+	@GetMapping("/borrar/{id}")
+	public String borrarContacto(@PathVariable("id") Integer id) {
+		
+		persoService.delete(id);
+		return "redirect:/";
+	}
+	
+	
+	@RequestMapping("/actualizar/{id}")
+	public String actualizarEmp(@PathVariable("id") int id, ModelMap model ) {
+		model.addAttribute("updateContacto", persoService.getEmployeeById(id));
+		return "updateContacto";
 	}
 		
 		

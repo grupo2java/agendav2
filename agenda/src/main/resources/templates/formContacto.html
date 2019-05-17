@@ -14,6 +14,7 @@
 			<div class="form-group">
 				<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre completo">
 				
+				
 			</div>
 			
 			<div class="form-group">
@@ -30,11 +31,14 @@
 				<input class="form-control" type="text" name="dni" id="dni" placeholder="Introduce tu DNI">
 				
 			</div>
-
-			<div class="form-group">
-				<input class="form-control" type="datetime" name="nacimiento" id="nacimiento" placeholder="Introduce tu fecha de nacimiento">
-				
-			</div>
+					<select th:field="*{country}">
+                         <option value=""> -- </option>
+                         <option th:each="country : ${countries}"
+                            th:value="${country.idprovincia}"
+                            th:utext="${country.provincia}"/>
+                  </select>
+			
+			
 			<p class="form-group">
 				<input class="btn btn-lg btn-block btn-primary" type="submit" value="Guardar" />
 			</p>
