@@ -35,7 +35,7 @@
 
 					      <td><a class="col btn btn-outline-info mr-1"  th:href="@{/datos/{id}(id=${persona.idpersona})}" role="button">Detalles</a></td>
 					      <td><a class="col btn btn-outline-warning mr-1"  role="button">Editar</a></td>
-					      <td><a class="col btn btn-outline-danger mr-1" role="button">Borrar</a></td>
+					      <td><a class="col btn btn-outline-danger mr-1" th:href="@{/borrar/{id}(id=${persona.idpersona})}" role="button">Borrar</a></td>
 					    </tr>
 					  </tbody>
 					</table>
