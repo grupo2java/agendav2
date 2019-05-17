@@ -16,6 +16,8 @@
   <div th:replace="fragments/topnav :: navbar"></div>
   
   	<div class="alert alert-success text-center" th:if="${msg_anadido != null}" th:text="${msg_anadido}"></div>
+  	<div class="alert alert-warning text-center" th:if="${msg_actualizado != null}" th:text="${msg_actualizado}"></div>
+	<div class="alert alert-danger text-center" th:if="${msg_borrado != null}" th:text="${msg_borrado}"></div>
   	
     
     <h1>PAGINA DE LISTA DE PROVINCIAS</h1>
@@ -23,8 +25,8 @@
     <div class="container">
     	<div th:each="provincia : ${provincias}" class="row pb-2">
     		<p class="col-9 mb-2" th:text="${provincia.provincia}"></p>
-    		<a class="col btn btn-outline-warning mr-2"  th:href="@{/actualizar/{id}(id=${provincia.idprovincia})}" role="button">Editar</a>
-			<a class="col btn btn-outline-danger mr-2" role="button">Borrar</a>
+    		<a class="col btn btn-outline-warning mr-2"  th:href="@{/updateProvincia/{id}(id=${provincia.idprovincia})}" role="button">Editar</a>
+			<a class="col btn btn-outline-danger mr-1" th:href="@{/borrarProvincia/{id}(id=${provincia.idprovincia})}" role="button">Borrar</a>
     	</div>
     	
     	<hr>

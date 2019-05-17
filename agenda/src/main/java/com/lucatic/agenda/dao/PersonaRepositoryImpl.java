@@ -79,7 +79,7 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 		Query query = entityManager.createNativeQuery("SELECT em.idprovincia FROM agenda_mini.direccion as em " +
                 "WHERE em.idpersona LIKE ?", Direccion.class);
 		 query.setParameter(1, id + "%");
-		
+		 	((Number)query.getSingleResult()).intValue();
 		 return null;
 		
 		
