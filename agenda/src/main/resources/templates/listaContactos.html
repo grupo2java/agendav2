@@ -11,22 +11,33 @@
     <title>Agenda</title>
   </head>
   <body>
+  
+  <div th:replace="fragments/topnav :: navbar"></div>
     
     <h1>PAGINA DE LISTA DE CONTACTOS</h1>
     
     
     
-    
-    
-    
-    <div th:each="persona : ${personas}" class="row">
-				<p class="col-9" th:text="' ' + ${persona.nombre} + ' -> ' + ${persona.apellido1}"></p>
-				
-				
-<a class="col btn btn-outline-info mr-1" th:href="@{/datos/{id}(id=${persona.idpersona})}" role="button">Detalles</a>
-					
-<a class="col btn btn-outline-warning mr-1" th:href="@{/actualizar/{id}(id=${persona.idpersona})}" role="button">Editar</a>
-	<a class="col btn btn-outline-danger mr-1" th:href="@{/borrar/{id}(id=${persona.idpersona})}" role="button">Borrar</a>
+    				<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th scope="col">Nombre</th>
+					      <th scope="col">Apellido</th>
+					    </tr>
+					  </thead>
+					 
+    <div th:each="persona : ${personas}" class="row pb-2">
+				<!-- <p class="col-9" th:text="' ' + ${persona.nombre} + ' -> ' + ${persona.apellido1}"></p> -->
+				<tbody>
+					    <tr>
+					      <td th:text="' ' + ${persona.nombre}"></td>
+					      <td th:text="' ' + ${persona.apellido1}"></td>
+					      <td><a class="col btn btn-outline-info mr-1"  role="button">Detalles</a></td>
+					      <td><a class="col btn btn-outline-warning mr-1"  role="button">Editar</a></td>
+					      <td><a class="col btn btn-outline-danger mr-1" role="button">Borrar</a></td>
+					    </tr>
+					  </tbody>
+					</table>
 			</div>
 			<hr/>
 		<a class="btn btn-block btn-primary" href="new">Añadir Contacto</a>
