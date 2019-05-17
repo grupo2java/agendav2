@@ -17,6 +17,11 @@ public class Provincia implements Serializable {
 	@Id
 	private int idprovincia;
 
+	public Provincia(String provincia) {
+		super();
+		this.provincia = provincia;
+	}
+
 	private String provincia;
 
 	//bi-directional many-to-one association to Direccion

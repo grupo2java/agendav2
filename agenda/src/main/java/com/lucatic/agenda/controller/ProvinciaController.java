@@ -45,7 +45,7 @@ public class ProvinciaController {
 		return "provinciaForm";
 	}
 	
-	@PostMapping("/nuevaProvincia")
+	@PostMapping("/nuevaProvinciaADD")
 	public String enviarProvin(@RequestParam(value="user",required=false) String nombrePronvincia
    		 ,Model model, RedirectAttributes attributes) {
 		logger.info("Guardando provincia");
@@ -74,7 +74,6 @@ public class ProvinciaController {
 			@RequestParam(value="provinciaNombre",required=false) String provinciaN ,
 			RedirectAttributes attributes) {
 		
-		provinciaRepository.actualizarProvincia(id,provinciaN);
 		
 		//attributes.addFlashAttribute("msg_actualizado", "La provincia ha sido actualizado");
 		return "redirect:/";

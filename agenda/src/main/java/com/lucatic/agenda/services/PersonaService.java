@@ -19,6 +19,6 @@ public interface PersonaService {
 	 public List<Telefono> listaTelefonos(int id);
 	 public List<Direccion> listaDirecciones(int id);
 	 public List<Provincia> listaProvincias();
-	
+	public Provincia tedoyProvincia(int id);
 	
 }

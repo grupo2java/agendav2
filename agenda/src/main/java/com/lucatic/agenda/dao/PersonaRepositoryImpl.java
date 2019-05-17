@@ -76,11 +76,28 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 	@Override
 	public Provincia dameTuprovincia(int id) {
 		// TODO Auto-generated method stub
+		
+		 /*	
 		Query query = entityManager.createNativeQuery("SELECT em.idprovincia FROM agenda_mini.direccion as em " +
                 "WHERE em.idpersona LIKE ?", Direccion.class);
 		 query.setParameter(1, id + "%");
 		 	((Number)query.getSingleResult()).intValue();
 		 return null;
+		 */
+		/*
+		 Query query =  entityManager.createNativeQuery("select id from users where username = ?");  
+		   query.setParameter(1, "lt");  
+		   BigDecimal val = (BigDecimal) query.getSingleResult(); 
+		
+		   */
+			Query query = entityManager.createNativeQuery("SELECT em.idprovincia FROM agenda_mini.direccion as em " +
+	                "WHERE em.idpersona LIKE ?"); 
+			 query.setParameter(1,id);
+			 	((Number)query.getSingleResult()).intValue();
+		   int valor=(int)query.getSingleResult(); 
+		   
+		
+		 return  entityManager.find(Provincia.class,valor);
 		
 		
 	}
