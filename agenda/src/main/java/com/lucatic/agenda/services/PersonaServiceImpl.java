@@ -1,6 +1,7 @@
 package com.lucatic.agenda.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lucatic.agenda.dao.PersonaRepository;
+import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
+import com.lucatic.agenda.model.Provincia;
+import com.lucatic.agenda.model.Telefono;
 @Service
 @Transactional
 public class PersonaServiceImpl implements PersonaService{
@@ -20,7 +24,9 @@ public class PersonaServiceImpl implements PersonaService{
 	@Override
 	public List<Persona> list() {
 		// TODO Auto-generated method stub
+		
 		return personaDAO.findAll();
+		
 	}
 
 	@Override
@@ -42,5 +48,42 @@ public class PersonaServiceImpl implements PersonaService{
 		personaDAO.deleteById(id);
 		
 	}
+
+	@Override
+	public Persona getEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		
+		return personaDAO.damePersona(id);
+	
+		
+	}
+
+	@Override
+	public List<Telefono> listaTelefonos(int id) {
+		// TODO Auto-generated method stub
+		return personaDAO.dameTelefonos(id);
+	}
+
+	@Override
+	public List<Direccion> listaDirecciones(int id) {
+		// TODO Auto-generated method stub
+		return personaDAO.dameDirecciones(id);
+	}
+
+	@Override
+	public List<Provincia> listaProvincias() {
+		// TODO Auto-generated method stub
+		return personaDAO.getProvincias();
+	}
+
+	
+
+	
+	
+	 
+	 
+
+	
+
 
 }

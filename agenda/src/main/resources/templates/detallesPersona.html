@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Detalles de particulares</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body class="container">
+	<main>
+	<div>
+	<h1>DATOS PERSONA</h1>
+		<table class="table">
+				
+				<tr>
+					<td th:text="${personaDetalles.idpersona}">...</td>
+					<td th:text="${personaDetalles.nombre}">...</td>
+					<td th:text="${personaDetalles.apellido1}">...</td>
+					<td th:text="${personaDetalles.apellido2}">...</td>
+					<td th:text="${personaDetalles.dni}">...</td>
+						<td th:text="${personaDetalles.fechanacimiento}">...</td>
+					
+				</tr>
+		
+		</table>
+		
+	
+		
+		
+		
+		<table class="table">
+				
+					<thead>
+				<tr>
+					<th><h1>TELEFONOS ASOCIADOS</h1> </th>
+					
+				</tr>
+			</thead>
+					
+				<tr th:each="telefono : ${telefonos}" class="row">
+			
+				<td th:text="${telefono.idtelefono}">...</td>
+				<td th:text="${telefono.telefono}">...</td>
+				</tr>
+		
+		</table>
+		
+		
+		<table class="table">
+					
+						<thead>
+				<tr>
+					<th><h1>DIRECCIONES ASOCIADOS AL CONTACTO</h1></th>
+					
+				</tr>
+			</thead>
+				<tr th:each="direccion : ${direcciones}" class="row">
+				
+				<td th:text="${direccion.iddireccion}">...</td>
+				<td th:text="${direccion.direccion}">...</td>
+				<td th:text="${direccion.codpostal}">...</td>
+				<td th:text="${direccion.localidad}">...</td>
+				</tr>
+		
+		</table>
+		
+		
+		
+
+
+		
+		
+	
+		<a class="btn btn-block btn-primary" href="/">Volver</a>
+		</div>
+	</main>
+</body>
+</html>
