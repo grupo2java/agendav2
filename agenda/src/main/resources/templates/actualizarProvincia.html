@@ -12,11 +12,12 @@
 	
 	<div class="container-fluid">
 		<h1>Formulario para actualizar Provincia</h1>
-		<form action="#" th:action="@{/actualizar}" th:object="${provincia}" method="post">
-			<input type="hidden" th:field="*{idprovincia}">
+		<form action="#" th:action="@{/guardaProvincia}" th:object="${provincia}" method="post">
+			<input type="hidden" th:field="*{idprovincia}" name="idprovincia" id="idprovincia" >
 			<div class="form-group">
-				<input class="form-control" type="text" th:field="*{provincia}" id="provincia" placeholder="Introduce la provincia">
+				<input class="form-control" type="text" th:field="*{provincia}" name="provincia" id="provincia" placeholder="Introduce la provincia">
 			</div>
+				
 			<p class="form-group">
 				<input class="btn btn-lg btn-block btn-primary" type="submit" value="Guardar" />
 			</p>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,11 +71,10 @@ public class ProvinciaController {
 	}
 	
 	@PostMapping("/guardaProvincia")
-	public String guardaActualizarProvincia(@RequestParam(value="provinciaid",required=false) int id, 
-			@RequestParam(value="provinciaNombre",required=false) String provinciaN ,
-			RedirectAttributes attributes) {
-		
-		
+	public String guardaActualizarProvincia(@ModelAttribute Provincia provincia) {
+		String prov=provincia.getProvincia();
+		int ifr=provincia.getIdprovincia();
+		System.out.println("NOMBRE DE LA PRONVINCIA"+prov+" Y LA ID DE PROVINCIA "+ifr);
 		//attributes.addFlashAttribute("msg_actualizado", "La provincia ha sido actualizado");
 		return "redirect:/";
 	}
