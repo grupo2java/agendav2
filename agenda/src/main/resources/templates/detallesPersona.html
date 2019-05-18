@@ -3,15 +3,17 @@
 <head>
 	<title>Detalles de particulares</title>
 	<meta charset="UTF-8" />
+	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body class="container">
+<body class="row-fluid">
 
 <div th:replace="fragments/topnav :: navbar"></div>
 
 	<main>
 	<div>
-	<h3>DATOS PERSONA</h3>
+	<h3 class="text-center">DATOS PERSONA</h3>
+
 		<table class="table">
 				
 				<tr>
@@ -25,17 +27,11 @@
 				</tr>
 		
 		</table>
-		
-	
-
-
-
-
-		
-		
+			
 
 		<table class="table">
 				
+
 				 <thead>
         <tr class="row">
             <th>Telefonos del Contacto</th>
@@ -48,7 +44,15 @@
         </tr>
        
        <tr th:each="telefono : ${telefonos}" class="row">
-			
+					<thead>
+				<tr>
+					<th><h1 class="text-center">TELEFONOS ASOCIADOS</h1> </th>
+					
+				</tr>
+			</thead>
+					
+				<tr th:each="telefono : ${telefonos}" class="row">
+
 				<td th:text="${telefono.telefono}">...</td>
         </tr>
 </tbody>
@@ -60,7 +64,11 @@
 					
 						<thead>
 				<tr>
+
 					<th><h3>DIRECCIONES ASOCIADOS AL CONTACTO</h3></th>
+
+					<th><h1 class="text-center">DIRECCIONES ASOCIADOS AL CONTACTO</h1></th>
+
 					
 				</tr>
 			</thead>
