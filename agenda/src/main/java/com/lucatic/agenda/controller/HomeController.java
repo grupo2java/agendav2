@@ -52,7 +52,11 @@ public class HomeController {
 	public String newUser(ModelMap model) {
 		logger.info("creamos nueva persona");
 		model.addAttribute("persona", new Persona());
-		model.addAttribute("countries", persoService.listaProvincias());
+		
+model.addAttribute("countries", persoService.listaProvincias());
+		
+		int valor=persoService.listaProvincias().size();
+		System.out.println("valores : "+valor);
 		return "formContacto";		
 	}
 
@@ -74,7 +78,7 @@ public class HomeController {
 		model.addAttribute("personaDetalles", persoService.getEmployeeById(id));
 		model.addAttribute("telefonos", persoService.listaTelefonos(id));
 		model.addAttribute("direcciones", persoService.listaDirecciones(id));
-
+	
 		model.addAttribute("provincias", persoService.tedoyProvincia(id));
 		return "detallesPersona";
 	}

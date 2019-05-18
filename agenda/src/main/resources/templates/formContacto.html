@@ -28,18 +28,34 @@
 				<input class="form-control" type="text" name="apellido2" id="apellido2" placeholder="Introduce tu segundo apellido">
 				
 			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="telefono" id="telefono" placeholder="Introduce tu telefono">
+				
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="telefono" id="telefono" placeholder="Introduce tu direccion">
+				
+			</div>
 			
 			<div class="form-group">
 				<input class="form-control" type="text" name="dni" id="dni" placeholder="Introduce tu DNI">
 				
 			</div>
-					<select th:field="*{country}">
+			<div class="form-group">
+				<h6>Introduzca su fecha de nacimiento </h6>
+				<input class="form-control" type="date" name="fecha" id="fecha">
+				
+			</div>
+				<div class="form-group">
+				<h6>ELIJA LA PROVINCIA </h6>
+					<select name="pro"> 
                          <option value=""> -- </option>
-                         <option th:each="country : ${countries}"
-                            th:value="${country.idprovincia}"
-                            th:utext="${country.provincia}"/>
+                           <option th:each="country : ${countries}"
+                           th:value="${country.idprovincia}" 
+                            th:text="${country.provincia}"/>
+                          
                   </select>
-			
+			</div>
 			
 			<p class="form-group">
 				<input class="btn btn-lg btn-block btn-primary" type="submit" value="Guardar" />

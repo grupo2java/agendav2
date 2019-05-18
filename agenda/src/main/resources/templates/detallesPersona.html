@@ -11,7 +11,7 @@
 
 	<main>
 	<div>
-	<h1>DATOS PERSONA</h1>
+	<h3>DATOS PERSONA</h3>
 		<table class="table">
 				
 				<tr>
@@ -27,23 +27,31 @@
 		</table>
 		
 	
+
+
+
+
 		
 		
-		
+
 		<table class="table">
 				
-					<thead>
-				<tr>
-					<th><h1>TELEFONOS ASOCIADOS</h1> </th>
-					
-				</tr>
-			</thead>
-					
-				<tr th:each="telefono : ${telefonos}" class="row">
+				 <thead>
+        <tr class="row">
+            <th>Telefonos del Contacto</th>
+        </tr>
+    </thead>
+				
+				   <tbody>
+				 <tr th:if="${telefonos.empty}">
+            <td > No Tiene telefonos </td>
+        </tr>
+       
+       <tr th:each="telefono : ${telefonos}" class="row">
 			
-				<td th:text="${telefono.idtelefono}">...</td>
 				<td th:text="${telefono.telefono}">...</td>
-				</tr>
+        </tr>
+</tbody>
 		
 		</table>
 		
@@ -52,10 +60,16 @@
 					
 						<thead>
 				<tr>
-					<th><h1>DIRECCIONES ASOCIADOS AL CONTACTO</h1></th>
+					<th><h3>DIRECCIONES ASOCIADOS AL CONTACTO</h3></th>
 					
 				</tr>
 			</thead>
+			
+			<tr th:if="${direcciones.empty}">
+            <td > No Tiene direcciones asociadas</td>
+        </tr>
+			
+			
 				<tr th:each="direccion : ${direcciones}" class="row">
 				
 				<td th:text="${direccion.iddireccion}">...</td>
@@ -65,7 +79,7 @@
 				</tr>
 		
 		</table>
-		<h1>PROVINCIA DONDE VIVES</h1>
+		<h3>PROVINCIA DONDE VIVES</h4>
 		<table class="table">
 				
 				<tr>
