@@ -21,5 +21,8 @@ public interface PersonaService {
 	public Provincia tedoyProvincia(int id);
 	public int teVoyadarIdContacto(String nombre, String dni);
 	public void addtelefono(String telefono,int idperso );
+	public void addDireccion(String direccion,String codpostal,String localidad,int idprovincia,int idpersona);
+	public String tedoyNombreLocalidad(int idprovincia);
+	
 	
 }

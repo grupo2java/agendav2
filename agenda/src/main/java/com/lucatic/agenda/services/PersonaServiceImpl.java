@@ -94,6 +94,18 @@ public class PersonaServiceImpl implements PersonaService{
 		personaDAO.creoTelefono(telefono, idperso);
 	}
 
+	@Override
+	public void addDireccion(String direccion, String codpostal, String localidad, int idprovincia, int idpersona) {
+		// TODO Auto-generated method stub
+		personaDAO.creoDireccion(direccion, codpostal, localidad, idprovincia, idpersona);
+	}
+
+	@Override
+	public String tedoyNombreLocalidad(int idprovincia) {
+		// TODO Auto-generated method stub
+		return personaDAO.nombreProvincia(idprovincia);
+	}
+
 	
 
 	
