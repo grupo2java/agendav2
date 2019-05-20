@@ -65,10 +65,16 @@ public class HomeController {
 	}
 	
 	@PostMapping("/save")
-	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes ) {
+	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes, @RequestParam(value="telefono",required=false)String tel ) {
 		logger.info("-- en SAVE");
 		persoService.add(pers);
-		attributes.addFlashAttribute("msg_anadido", "El contacto ha sido añadido");
+		System.out.println(pers.getIdpersona()+pers.getNombre());
+		
+		int valorID=persoService.teVoyadarIdContacto(pers.getNombre(),pers.getDni());
+		System.out.println("telefono: "+tel);
+		System.out.println("muestra id : "+valorID);
+		
+		persoService.addtelefono(tel, valorID);
 		return new ModelAndView("redirect:/");
 	}
 	

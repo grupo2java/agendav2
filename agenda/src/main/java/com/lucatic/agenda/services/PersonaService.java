@@ -19,5 +19,7 @@ public interface PersonaService {
 	public List<Direccion> listaDirecciones(int id);
 	public List<Provincia> listaProvincias();
 	public Provincia tedoyProvincia(int id);
+	public int teVoyadarIdContacto(String nombre, String dni);
+	public void addtelefono(String telefono,int idperso );
 	
 }

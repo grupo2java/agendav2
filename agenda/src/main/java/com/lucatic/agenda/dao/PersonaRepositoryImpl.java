@@ -83,6 +83,33 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 		
 	}
 
+	@Override
+	public int teDoyIdPersona(String nombre,String dni) {
+		
+		Query query = entityManager.createNativeQuery("SELECT em.idpersona FROM agenda_mini.persona as em "
+				+ "WHERE em.nombre LIKE ? AND em.dni LIKE ? ");
+		 query.setParameter(1, nombre);
+		 query.setParameter(2,dni);
+		
+		 
+		 int valor = (int) query.getSingleResult();
+		return valor;
+		
+	}
+
+	@Override
+	public void creoTelefono(String telefono, int idperso) {
+		// TODO Auto-generated method stub
+
+		Query query = entityManager.createNativeQuery("INSERT INTO agenda_mini.telefono (telefono,idpersona) VALUES (?,?) ");
+		 query.setParameter(1, telefono);
+		 query.setParameter(2,idperso);
+		query.executeUpdate();
+	
+	}
+	
+	
+	
 	
 
 

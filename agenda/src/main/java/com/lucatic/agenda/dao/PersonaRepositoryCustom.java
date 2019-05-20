@@ -17,5 +17,6 @@ public interface PersonaRepositoryCustom {
 	List<Direccion> dameDirecciones(int id);
 	List<Provincia> getProvincias();
 	Provincia dameTuprovincia(int id);
-	
+	public int teDoyIdPersona(String nombre, String dni);
+	public void creoTelefono(String telefono,int idperso);
 }

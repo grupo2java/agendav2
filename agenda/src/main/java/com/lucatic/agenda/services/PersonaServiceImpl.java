@@ -82,6 +82,18 @@ public class PersonaServiceImpl implements PersonaService{
 		return personaDAO.dameTuprovincia(id);
 	}
 
+	@Override
+	public int teVoyadarIdContacto(String nombre, String dni) {
+		// TODO Auto-generated method stub
+		return personaDAO.teDoyIdPersona(nombre, dni);
+	}
+
+	@Override
+	public void addtelefono(String telefono, int idperso) {
+		// TODO Auto-generated method stub
+		personaDAO.creoTelefono(telefono, idperso);
+	}
+
 	
 
 	
