@@ -1,7 +1,6 @@
 package com.lucatic.agenda.controller;
 
 import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
+import com.lucatic.agenda.model.Provincia;
+import com.lucatic.agenda.model.Telefono;
 import com.lucatic.agenda.services.PersonaService;
+
 
 @Controller
 public class HomeController {
@@ -52,15 +55,22 @@ public class HomeController {
 	public String newUser(ModelMap model) {
 		logger.info("creamos nueva persona");
 		model.addAttribute("persona", new Persona());
-		
-model.addAttribute("countries", persoService.listaProvincias());
-		
+		model.addAttribute("countries", persoService.listaProvincias());
 		int valor=persoService.listaProvincias().size();
 		System.out.println("valores : "+valor);
 		return "formContacto";		
 	}
+	
+	@PostMapping("/save")
+	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes ) {
+		logger.info("-- en SAVE");
+		persoService.add(pers);
+		attributes.addFlashAttribute("msg_anadido", "El contacto ha sido añadido");
+		return new ModelAndView("redirect:/");
+	}
+	
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@RequestParam(value="nombre",required=false) String nombre ,
 			@RequestParam(value="apellido1",required=false) String apellido1,
 			@RequestParam(value="apellido2",required=false) String apellido2,
@@ -70,7 +80,7 @@ model.addAttribute("countries", persoService.listaProvincias());
 		persoService.add(new Persona());
 		return new ModelAndView("redirect:/");
 	}
-	
+	*/
 	
 	@GetMapping("/datos/{id}")
 	public String verDetallePersona(@PathVariable("id") int id, ModelMap model) {
@@ -78,7 +88,6 @@ model.addAttribute("countries", persoService.listaProvincias());
 		model.addAttribute("personaDetalles", persoService.getEmployeeById(id));
 		model.addAttribute("telefonos", persoService.listaTelefonos(id));
 		model.addAttribute("direcciones", persoService.listaDirecciones(id));
-	
 		model.addAttribute("provincias", persoService.tedoyProvincia(id));
 		return "detallesPersona";
 	}
@@ -97,21 +106,6 @@ model.addAttribute("countries", persoService.listaProvincias());
 		model.addAttribute("updateContacto", persoService.getEmployeeById(id));
 		return "updateContacto";
 	}
-	
-	
-	
-	
-	
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
