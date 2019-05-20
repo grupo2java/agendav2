@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lucatic.agenda.dao.TelefonoRepository;
 import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.model.Provincia;
@@ -29,6 +30,8 @@ public class HomeController {
 
 	@Autowired
 	private PersonaService persoService;
+	@Autowired 
+	private TelefonoRepository telefonoRepository;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/" )
 	public String inicio(ModelMap model) {
