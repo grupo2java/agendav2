@@ -7,6 +7,14 @@ import java.time.LocalDate;
 
 
 /**
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * @date 16/05/2019
+ * 
+ * @description modelo para la tabla persona de la base de datos , se le añaden listas de telefono y direcciones 
+ * 
  * The persistent class for the persona database table.
  * 
  */

@@ -5,6 +5,14 @@ import javax.persistence.*;
 
 
 /**
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * @date 16/05/2019
+ * 
+ * @Description modelo de la tabla direccion 
+ * 
  * The persistent class for the direccion database table.
  * 
  */
