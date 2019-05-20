@@ -33,4 +33,7 @@ public interface PersonaRepositoryCustom {
 	Provincia dameTuprovincia(int id);
 	public int teDoyIdPersona(String nombre, String dni);
 	public void creoTelefono(String telefono,int idperso);
+	public void creoDireccion(String direccion,String codpostal,String localidad,int idprovincia,int idpersona);
+	
+	public String nombreProvincia(int idprovincia);
 }

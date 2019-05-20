@@ -122,6 +122,34 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 		query.executeUpdate();
 	
 	}
+
+	@Override
+	public void creoDireccion(String direccion, String codpostal, String localidad, int idprovincia, int idpersona) {
+		
+		Query query = entityManager.createNativeQuery("INSERT INTO agenda_mini.direccion (direccion,codpostal,localidad,idprovincia,idpersona) VALUES (?,?,?,?,?) ");
+		 query.setParameter(1,direccion);
+		 query.setParameter(2,codpostal);
+		 query.setParameter(3,localidad);
+		 query.setParameter(4,idprovincia);
+		 query.setParameter(5,idpersona);
+		 
+		 
+		 
+		query.executeUpdate();
+		
+	}
+
+	@Override
+	public String nombreProvincia(int idprovincia) {
+		// TODO Auto-generated method stub
+		
+		Query query = entityManager.createNativeQuery("SELECT em.provincia FROM agenda_mini.provincia as em WHERE em.idprovincia LIKE ?");
+		 query.setParameter(1, idprovincia);
+		
+		 
+	String nombre = (String) query.getSingleResult();
+		return nombre;
+	}
 	
 	
 	

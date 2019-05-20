@@ -65,7 +65,12 @@ public class HomeController {
 	}
 	
 	@PostMapping("/save")
-	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes, @RequestParam(value="telefono",required=false)String tel ) {
+	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes, @RequestParam(value="telefono",required=false)String tel, 
+			@RequestParam(value="direccion",required=false) String dir,
+			@RequestParam(value="codpostal",required=false) String codP,
+			@RequestParam(value="provinciaEscogida",required=false) int provin
+			
+			) {
 		logger.info("-- en SAVE");
 		persoService.add(pers);
 		System.out.println(pers.getIdpersona()+pers.getNombre());
@@ -73,8 +78,14 @@ public class HomeController {
 		int valorID=persoService.teVoyadarIdContacto(pers.getNombre(),pers.getDni());
 		System.out.println("telefono: "+tel);
 		System.out.println("muestra id : "+valorID);
+		System.out.println("muestra direccion : "+dir);
+		System.out.println("muestra codigo postal : "+codP);
+		System.out.println("provincia elegida"+provin);
+		
+		String nombreProvincia=persoService.tedoyNombreLocalidad(provin);
 		
 		persoService.addtelefono(tel, valorID);
+		persoService.addDireccion(dir, codP, nombreProvincia, provin, valorID);
 		return new ModelAndView("redirect:/");
 	}
 	
