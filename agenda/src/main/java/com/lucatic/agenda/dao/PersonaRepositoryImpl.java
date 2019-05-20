@@ -15,6 +15,21 @@ import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
 
 
+/**
+* 
+* @author grupo2
+* 
+* @Version 2.0
+* 
+* fecha:15/05/2019
+* 
+* Descripcion:Metodos implementados del repositorio persona.
+* 
+* 
+*
+*/
+
+
 @Repository
 @Transactional(readOnly = true)
 public class PersonaRepositoryImpl implements PersonaRepositoryCustom {

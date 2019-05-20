@@ -2,6 +2,22 @@ package com.lucatic.agenda.services;
 
 import java.util.List;
 
+/**
+ * 
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * 18/05/2019
+ * 
+ * Interfaz para la implementacion de los servicios Persona
+ * 
+ * 
+ * 
+ * 
+ *
+ */
+
 import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.model.Provincia;

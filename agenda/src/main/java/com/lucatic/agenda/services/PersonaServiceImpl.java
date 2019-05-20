@@ -13,6 +13,23 @@ import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
+
+/**
+ * 
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * 18/05/2019
+ * 
+ * Implementacion de los servicios Persona
+ * 
+ * 
+ * 
+ * 
+ *
+ */
+
 @Service
 @Transactional
 public class PersonaServiceImpl implements PersonaService{

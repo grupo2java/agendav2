@@ -8,6 +8,20 @@ import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
 
 
+/**
+* 
+* @author grupo2
+* 
+* @Version 2.0
+* 
+* fecha:15/05/2019
+* 
+* Descripcion:Repositorio para la clase persona.
+* 
+* 
+*
+*/
+
 public interface PersonaRepositoryCustom {
 
 	
