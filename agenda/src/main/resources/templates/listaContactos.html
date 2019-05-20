@@ -21,8 +21,8 @@
     				<table class="table table-striped">
 					  <thead>
 					    <tr>
-					      <th scope="col">Nombre</th>
-					      <th scope="col">Apellido</th>
+					      <th scope="col" class="text-center" >Nombre</th>
+					      <th scope="col" colspan="4" >Apellido</th>
 					    </tr>
 					  </thead>
 					 
@@ -30,7 +30,7 @@
 				<!-- <p class="col-9" th:text="' ' + ${persona.nombre} + ' -> ' + ${persona.apellido1}"></p> -->
 				<tbody>
 					    <tr>
-					      <td th:text="' ' + ${persona.nombre}"></td>
+					      <td th:text="' ' + ${persona.nombre}" class="text-center"></td>
 					      <td th:text="' ' + ${persona.apellido1}"></td>
 
 					      <td><a class="col btn btn-outline-info mr-1"  th:href="@{/datos/{id}(id=${persona.idpersona})}" role="button">Detalles</a></td>

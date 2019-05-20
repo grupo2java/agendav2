@@ -16,12 +16,12 @@
 
 		<table class="table">
 		<tr>
-		<td>NOmbre</td>
+		<td class="text-center" ><b>NOMBRE</b></td>
 			
-				<td>Primer apellido</td>
-			<td>Segundo apellido</td>
-				<td>DNI</td>
-			<td>Fecha de Nacimiento</td>
+				<td class="text-center"><b>PRIMER APELLIDO</b> </td>
+			<td class="text-center"><b>SEGUNDO APELLIDO</b></td>
+				<td class="text-center"><b>DNI</b></td>
+			<td class="text-center"><b>FECHA DE NACIMIENTO</b></td>
 		
 		
 		</tr>
@@ -29,11 +29,11 @@
 				
 				<tr>
 					
-					<td th:text="${personaDetalles.nombre}">...</td>
-					<td th:text="${personaDetalles.apellido1}">...</td>
-					<td th:text="${personaDetalles.apellido2}">...</td>
-					<td th:text="${personaDetalles.dni}">...</td>
-						<td th:text="${personaDetalles.fechanacimiento}">...</td>
+					<td th:text="${personaDetalles.nombre}" class="text-center">...</td>
+					<td th:text="${personaDetalles.apellido1}" class="text-center" >...</td>
+					<td th:text="${personaDetalles.apellido2}" class="text-center" >...</td>
+					<td th:text="${personaDetalles.dni}" class="text-center" >...</td>
+						<td th:text="${personaDetalles.fechanacimiento}" class="text-center">...</td>
 					
 				</tr>
 		
@@ -45,7 +45,7 @@
 
 				 <thead>
         <tr >
-            <th><h3 class="text-center">Telefonos del Contacto</h3></th>
+            <th><h3 class="text-center">TELEFONOS DEL CONTACTO</h3></th>
         </tr>
     </thead>
 				
@@ -71,30 +71,30 @@
 		</table>
 		
 		
-		<table class="table" border="5">			
+		<table class="table" >			
 				<tr>
 
-					<th><h3 class="text-center">DIRECCIONES ASOCIADOS AL CONTACTO</h3></th>	
+					<td colspan="3"><h3 class="text-center">DIRECCIONES ASOCIADOS AL CONTACTO</h3></td>	
 				</tr>
 		
 			
 			<tr th:if="${direcciones.empty}">
-            <td > No Tiene direcciones asociadas</td>           
+            <td colspan="3"> No Tiene direcciones asociadas</td>           
         </tr>
         <tr>
-        <td>DIRECCION</td>
-         <td>CODIGO POSTAL</td>
-          <td>LOCALIDAD</td>
+        <td class="text-center"><b>DIRECCION</b></td>
+         <td class="text-center"><b>CODIGO POSTAL</b></td>
+          <td class="text-center"><b>LOCALIDAD</b></td>
         	</tr>
         
 			
 			
-				<tr th:each="direccion : ${direcciones}" class="row">
+				<tr th:each="direccion : ${direcciones}" >
 				
 			
-				<td th:text="${direccion.direccion}">...</td>
-				<td th:text="${direccion.codpostal}">...</td>
-				<td th:text="${direccion.localidad}">...</td>
+				<td th:text="${direccion.direccion}" class="text-center">...</td>
+				<td th:text="${direccion.codpostal}" class="text-center">...</td>
+				<td th:text="${direccion.localidad}" class="text-center">...</td>
 				</tr>
 	
 		</table>
@@ -103,7 +103,7 @@
 				
 				<tr>
 				
-					<td th:text="${provincias.provincia}">...</td>
+					<td th:text="${provincias.provincia}" class="text-center">...</td>
 					
 					
 				</tr>
