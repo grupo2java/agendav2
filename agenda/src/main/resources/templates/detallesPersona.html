@@ -15,9 +15,20 @@
 	<h3 class="text-center">DATOS PERSONA</h3>
 
 		<table class="table">
+		<tr>
+		<td>NOmbre</td>
+			
+				<td>Primer apellido</td>
+			<td>Segundo apellido</td>
+				<td>DNI</td>
+			<td>Fecha de Nacimiento</td>
+		
+		
+		</tr>
+		
 				
 				<tr>
-					<td th:text="${personaDetalles.idpersona}">...</td>
+					
 					<td th:text="${personaDetalles.nombre}">...</td>
 					<td th:text="${personaDetalles.apellido1}">...</td>
 					<td th:text="${personaDetalles.apellido2}">...</td>
@@ -60,31 +71,32 @@
 		</table>
 		
 		
-		<table class="table">
-					
-						<thead>
+		<table class="table" border="5">			
 				<tr>
 
-					<th><h3 class="text-center">DIRECCIONES ASOCIADOS AL CONTACTO</h3></th>
-
-
-					
+					<th><h3 class="text-center">DIRECCIONES ASOCIADOS AL CONTACTO</h3></th>	
 				</tr>
-			</thead>
+		
 			
 			<tr th:if="${direcciones.empty}">
-            <td > No Tiene direcciones asociadas</td>
+            <td > No Tiene direcciones asociadas</td>           
         </tr>
+        <tr>
+        <td>DIRECCION</td>
+         <td>CODIGO POSTAL</td>
+          <td>LOCALIDAD</td>
+        	</tr>
+        
 			
 			
 				<tr th:each="direccion : ${direcciones}" class="row">
 				
-				<td th:text="${direccion.iddireccion}">...</td>
+			
 				<td th:text="${direccion.direccion}">...</td>
 				<td th:text="${direccion.codpostal}">...</td>
 				<td th:text="${direccion.localidad}">...</td>
 				</tr>
-		
+	
 		</table>
 		<h3 class="text-center">PROVINCIA DONDE VIVES</h3>
 		<table class="table">
