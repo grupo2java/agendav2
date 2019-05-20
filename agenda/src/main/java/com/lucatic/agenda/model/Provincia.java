@@ -16,8 +16,14 @@ public class Provincia implements Serializable {
 
 	@Id
 	private int idprovincia;
-
 	private String provincia;
+
+	public Provincia(String provincia) {
+		super();
+		this.provincia = provincia;
+	}
+
+
 
 	//bi-directional many-to-one association to Direccion
 	@OneToMany(mappedBy="provincia")

@@ -15,16 +15,26 @@ import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
 
 
-
-
-
-
 @Repository
 @Transactional(readOnly = true)
 public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 
 	@PersistenceContext
 	EntityManager entityManager;
+	
+	@Override
+	public Provincia dameTuprovincia(int id) {
+		// TODO Auto-generated method stub
+
+		Query query = entityManager.createNativeQuery(
+				"SELECT em.idprovincia FROM agenda_mini.direccion as em " + "WHERE em.idpersona LIKE ?");
+		query.setParameter(1, id);
+
+		int valor = (int) query.getSingleResult();
+
+		return entityManager.find(Provincia.class, valor);
+
+	}
 
 	@Override
 	public List<Persona> getFirstNombre(String nombre) {
@@ -67,23 +77,13 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 	public List<Provincia> getProvincias() {
 		// TODO Auto-generated method stub
 		
-		Query query = entityManager.createNativeQuery("SELECT * FROM agenda_mini.provincia ");
+		Query query = entityManager.createNativeQuery("SELECT * FROM agenda_mini.provincia ",Provincia.class);
    
 		return query.getResultList();
 		
 	}
 
-	@Override
-	public Provincia dameTuprovincia(int id) {
-		// TODO Auto-generated method stub
-		Query query = entityManager.createNativeQuery("SELECT em.idprovincia FROM agenda_mini.direccion as em " +
-                "WHERE em.idpersona LIKE ?", Direccion.class);
-		 query.setParameter(1, id + "%");
-		
-		 return null;
-		
-		
-	}
+	
 
 
 

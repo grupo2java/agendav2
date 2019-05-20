@@ -76,6 +76,12 @@ public class PersonaServiceImpl implements PersonaService{
 		return personaDAO.getProvincias();
 	}
 
+	@Override
+	public Provincia tedoyProvincia(int id) {
+		// TODO Auto-generated method stub
+		return personaDAO.dameTuprovincia(id);
+	}
+
 	
 
 	
