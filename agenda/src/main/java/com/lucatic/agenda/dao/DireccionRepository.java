@@ -7,6 +7,5 @@ import com.lucatic.agenda.model.Direccion;
 @Repository
 public interface DireccionRepository extends JpaRepository<Direccion, Integer>{
 	
-	
 
 }

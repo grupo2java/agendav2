@@ -6,7 +6,6 @@ import com.lucatic.agenda.model.Telefono;
 
 @Repository
 public interface TelefonoRepository extends JpaRepository<Telefono, Integer>{
-	
-	
 
+	
 }

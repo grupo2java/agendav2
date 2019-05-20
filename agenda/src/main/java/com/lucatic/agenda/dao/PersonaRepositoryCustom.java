@@ -10,7 +10,6 @@ import com.lucatic.agenda.model.Telefono;
 
 public interface PersonaRepositoryCustom {
 
-	//List<User> getFirstNamesLike(String username);
 	
 	List<Persona> getFirstNombre(String nombre);
 	Persona damePersona(int id);

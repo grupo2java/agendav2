@@ -14,11 +14,10 @@ public interface PersonaService {
 	public void update(Persona perso);
 	public void add(Persona perso);
 	public void delete(int id);
-	 public Persona getEmployeeById(int id);
-	 
-	 public List<Telefono> listaTelefonos(int id);
-	 public List<Direccion> listaDirecciones(int id);
-	 public List<Provincia> listaProvincias();
+	public Persona getEmployeeById(int id);
+	public List<Telefono> listaTelefonos(int id);
+	public List<Direccion> listaDirecciones(int id);
+	public List<Provincia> listaProvincias();
 	public Provincia tedoyProvincia(int id);
 	
 }
