@@ -1,7 +1,6 @@
 package com.lucatic.agenda.controller;
 
 import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lucatic.agenda.dao.TelefonoRepository;
+import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
+import com.lucatic.agenda.model.Provincia;
+import com.lucatic.agenda.model.Telefono;
 import com.lucatic.agenda.services.PersonaService;
+
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private PersonaService persoService;
+	@Autowired 
+	private TelefonoRepository telefonoRepository;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/" )
 	public String inicio(ModelMap model) {
@@ -52,15 +58,36 @@ public class HomeController {
 	public String newUser(ModelMap model) {
 		logger.info("creamos nueva persona");
 		model.addAttribute("persona", new Persona());
-		
-model.addAttribute("countries", persoService.listaProvincias());
-		
+		model.addAttribute("countries", persoService.listaProvincias());
 		int valor=persoService.listaProvincias().size();
 		System.out.println("valores : "+valor);
 		return "formContacto";		
 	}
+	
+	@PostMapping("/save")
+	public ModelAndView saveUser(@ModelAttribute Persona pers, RedirectAttributes attributes, @RequestParam(value="telefono",required=false)String tel, 
+			@RequestParam(value="direccion",required=false) String dir,
+			@RequestParam(value="codpostal",required=false) String codP,
+			@RequestParam(value="provinciaEscogida",required=false) int provin
+			
+			) {
+		logger.info("-- en SAVE");
+		persoService.add(pers);
+		System.out.println(pers.getIdpersona()+pers.getNombre());
+		
+		int valorID=persoService.teVoyadarIdContacto(pers.getNombre(),pers.getDni());
+		
+		
+		String nombreProvincia=persoService.tedoyNombreLocalidad(provin);
+		
+		persoService.addtelefono(tel, valorID);
+		persoService.addDireccion(dir, codP, nombreProvincia, provin, valorID);
+		attributes.addFlashAttribute("msg_anadido","El contacto ha sido añadido");
+		return new ModelAndView("redirect:/");
+	}
+	
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@RequestParam(value="nombre",required=false) String nombre ,
 			@RequestParam(value="apellido1",required=false) String apellido1,
 			@RequestParam(value="apellido2",required=false) String apellido2,
@@ -70,7 +97,7 @@ model.addAttribute("countries", persoService.listaProvincias());
 		persoService.add(new Persona());
 		return new ModelAndView("redirect:/");
 	}
-	
+	*/
 	
 	@GetMapping("/datos/{id}")
 	public String verDetallePersona(@PathVariable("id") int id, ModelMap model) {
@@ -78,7 +105,6 @@ model.addAttribute("countries", persoService.listaProvincias());
 		model.addAttribute("personaDetalles", persoService.getEmployeeById(id));
 		model.addAttribute("telefonos", persoService.listaTelefonos(id));
 		model.addAttribute("direcciones", persoService.listaDirecciones(id));
-	
 		model.addAttribute("provincias", persoService.tedoyProvincia(id));
 		return "detallesPersona";
 	}
@@ -98,18 +124,12 @@ model.addAttribute("countries", persoService.listaProvincias());
 		return "updateContacto";
 	}
 	
-	
-	
-	
-	
-		
-		
-	
-	
-	
-	
-	
-	
+	@RequestMapping("/buscar")
+	public String buscarContactos(@RequestParam(value="busqueda",required=false) String bus, ModelMap model ) {
+		System.out.println("el contacto a buscar es: "+bus);
+		model.addAttribute("pers", persoService.listaPorBusqueda(bus));
+		return "mostrarContacto";
+	}
 	
 	
 	

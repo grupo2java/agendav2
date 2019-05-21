@@ -8,15 +8,32 @@ import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
 
 
+/**
+* 
+* @author grupo2
+* 
+* @Version 2.0
+* 
+* fecha:15/05/2019
+* 
+* Descripcion:Repositorio para la clase persona.
+* 
+* 
+*
+*/
+
 public interface PersonaRepositoryCustom {
 
-	//List<User> getFirstNamesLike(String username);
 	
-	List<Persona> getFirstNombre(String nombre);
+	List<Persona> busquedaPorPalabra(String palabraBusqueda);
 	Persona damePersona(int id);
 	List<Telefono> dameTelefonos(int id);
 	List<Direccion> dameDirecciones(int id);
 	List<Provincia> getProvincias();
 	Provincia dameTuprovincia(int id);
+	public int teDoyIdPersona(String nombre, String dni);
+	public void creoTelefono(String telefono,int idperso);
+	public void creoDireccion(String direccion,String codpostal,String localidad,int idprovincia,int idpersona);
 	
+	public String nombreProvincia(int idprovincia);
 }

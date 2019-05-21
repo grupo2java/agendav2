@@ -15,6 +15,21 @@ import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
 
 
+/**
+* 
+* @author grupo2
+* 
+* @Version 2.0
+* 
+* fecha:15/05/2019
+* 
+* Descripcion:Metodos implementados del repositorio persona.
+* 
+* 
+*
+*/
+
+
 @Repository
 @Transactional(readOnly = true)
 public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
@@ -37,16 +52,15 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 	}
 
 	@Override
-	public List<Persona> getFirstNombre(String nombre) {
-		// TODO Auto-generated method stub
+	public List<Persona> busquedaPorPalabra(String palabraBusqueda) {
 		
-		/*
-		 * Query query = entityManager.createNativeQuery("SELECT em.* FROM spring_data_jpa_example.username as em " +
-                "WHERE em.username LIKE ?", User.class);
-        query.setParameter(1, username + "%");
+		
+		Query query = entityManager.createNativeQuery("SELECT p.* FROM agenda_mini.persona as p " +
+                "WHERE p.nombre LIKE ?", Persona.class);
+        query.setParameter(1, palabraBusqueda + "%");
         return query.getResultList();
-		 */
-		return null;
+		
+		
 	}
 
 	@Override
@@ -83,6 +97,61 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 		
 	}
 
+	@Override
+	public int teDoyIdPersona(String nombre,String dni) {
+		
+		Query query = entityManager.createNativeQuery("SELECT em.idpersona FROM agenda_mini.persona as em "
+				+ "WHERE em.nombre LIKE ? AND em.dni LIKE ? ");
+		 query.setParameter(1, nombre);
+		 query.setParameter(2,dni);
+		
+		 
+		 int valor = (int) query.getSingleResult();
+		return valor;
+		
+	}
+
+	@Override
+	public void creoTelefono(String telefono, int idperso) {
+		// TODO Auto-generated method stub
+
+		Query query = entityManager.createNativeQuery("INSERT INTO agenda_mini.telefono (telefono,idpersona) VALUES (?,?) ");
+		 query.setParameter(1, telefono);
+		 query.setParameter(2,idperso);
+		query.executeUpdate();
+	
+	}
+
+	@Override
+	public void creoDireccion(String direccion, String codpostal, String localidad, int idprovincia, int idpersona) {
+		
+		Query query = entityManager.createNativeQuery("INSERT INTO agenda_mini.direccion (direccion,codpostal,localidad,idprovincia,idpersona) VALUES (?,?,?,?,?) ");
+		 query.setParameter(1,direccion);
+		 query.setParameter(2,codpostal);
+		 query.setParameter(3,localidad);
+		 query.setParameter(4,idprovincia);
+		 query.setParameter(5,idpersona);
+		 
+		 
+		 
+		query.executeUpdate();
+		
+	}
+
+	@Override
+	public String nombreProvincia(int idprovincia) {
+		// TODO Auto-generated method stub
+		
+		Query query = entityManager.createNativeQuery("SELECT em.provincia FROM agenda_mini.provincia as em WHERE em.idprovincia LIKE ?");
+		 query.setParameter(1, idprovincia);
+		
+		 
+	String nombre = (String) query.getSingleResult();
+		return nombre;
+	}
+	
+	
+	
 	
 
 

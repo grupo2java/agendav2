@@ -5,6 +5,15 @@ import javax.persistence.*;
 
 
 /**
+ * @author  grupo2
+ * 
+ * @version 2.0
+ * 
+ * @date 16/05/2019
+ * 
+ * @description el modelo de la clase telefono que representa la tabla telefono de la bbdd
+ * 
+ * 
  * The persistent class for the telefono database table.
  * 
  */

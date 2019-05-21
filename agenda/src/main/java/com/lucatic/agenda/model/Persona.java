@@ -7,6 +7,14 @@ import java.time.LocalDate;
 
 
 /**
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * @date 16/05/2019
+ * 
+ * @description modelo para la tabla persona de la base de datos , se le añaden listas de telefono y direcciones 
+ * 
  * The persistent class for the persona database table.
  * 
  */
@@ -23,7 +31,6 @@ public class Persona implements Serializable {
 	private String apellido2;
 
 	private String dni;
-
 	
 	private LocalDate fechanacimiento;
 
@@ -31,7 +38,7 @@ public class Persona implements Serializable {
 
 	//bi-directional many-to-one association to Direccion
 	@OneToMany(mappedBy="persona")
-	private List<Direccion> direccions;
+	private List<Direccion> direcciones;
 
 	//bi-directional many-to-one association to Telefono
 	@OneToMany(mappedBy="persona")
@@ -43,7 +50,7 @@ public class Persona implements Serializable {
 	
 
 	public Persona(int idpersona, String apellido1, String apellido2, String dni, LocalDate fechanacimiento, String nombre,
-			List<Direccion> direccions, List<Telefono> telefonos) {
+			List<Direccion> direcciones, List<Telefono> telefonos) {
 		super();
 		this.idpersona = idpersona;
 		this.apellido1 = apellido1;
@@ -51,7 +58,7 @@ public class Persona implements Serializable {
 		this.dni = dni;
 		this.fechanacimiento = fechanacimiento;
 		this.nombre = nombre;
-		this.direccions = direccions;
+		this.direcciones = direcciones;
 		this.telefonos = telefonos;
 	}
 
@@ -106,11 +113,11 @@ public class Persona implements Serializable {
 	}
 
 	public List<Direccion> getDireccions() {
-		return this.direccions;
+		return this.direcciones;
 	}
 
-	public void setDireccions(List<Direccion> direccions) {
-		this.direccions = direccions;
+	public void setDireccions(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
 	}
 
 	public Direccion addDireccion(Direccion direccion) {

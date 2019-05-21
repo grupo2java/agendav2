@@ -15,16 +15,9 @@
   
   <div th:replace="fragments/topnav :: navbar"></div>
     
-    <h1 class="text-center">PAGINA DE LISTA DE CONTACTOS</h1>
+    <h1 class="text-center">CONTACTOS ENCONTRADOS</h1>
     
    
-   <div  class="form-group">
-   <form action="buscar"  method="post">
-     <input type="text" name="busqueda" id="busqueda" placeholder="Escriba el nombre de la busqueda">
-      <input type="submit" value="Submit">
-   </form>
-   
-</div>
    
    
     				<table class="table table-striped">
@@ -34,8 +27,25 @@
 					      <th scope="col" colspan="4" >Apellido</th>
 					    </tr>
 					  </thead>
+					  
+					  
+					  
+
+
+				 <thead>
+        <tr >
+            <th><h3 class="text-center">TELEFONOS DEL CONTACTO</h3></th>
+        </tr>
+    </thead>
+				
+				
+				 <tr th:if="${pers.empty}">
+            <td > No hay contactos con el criterio de busqueda </td>
+     </tr>
+	  
+					  
 					 
-    <div th:each="persona : ${personas}" class="row pb-2">
+    <div th:each="persona : ${pers}" class="row pb-2">
 				<!-- <p class="col-9" th:text="' ' + ${persona.nombre} + ' -> ' + ${persona.apellido1}"></p> -->
 				<tbody>
 					    <tr>
@@ -48,9 +58,9 @@
 					    </tr>
 					  </tbody>
 					</table>
-			</div>
+		</div>
 			<hr/>
-		<a class="btn btn-block btn-primary" href="new">Añadir Contacto</a>
+		
     
     
     

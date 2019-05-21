@@ -13,6 +13,23 @@ import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
 import com.lucatic.agenda.model.Provincia;
 import com.lucatic.agenda.model.Telefono;
+
+/**
+ * 
+ * @author grupo2
+ * 
+ * @version 2.0
+ * 
+ * 18/05/2019
+ * 
+ * Implementacion de los servicios Persona
+ * 
+ * 
+ * 
+ * 
+ *
+ */
+
 @Service
 @Transactional
 public class PersonaServiceImpl implements PersonaService{
@@ -80,6 +97,36 @@ public class PersonaServiceImpl implements PersonaService{
 	public Provincia tedoyProvincia(int id) {
 		// TODO Auto-generated method stub
 		return personaDAO.dameTuprovincia(id);
+	}
+
+	@Override
+	public int teVoyadarIdContacto(String nombre, String dni) {
+		// TODO Auto-generated method stub
+		return personaDAO.teDoyIdPersona(nombre, dni);
+	}
+
+	@Override
+	public void addtelefono(String telefono, int idperso) {
+		// TODO Auto-generated method stub
+		personaDAO.creoTelefono(telefono, idperso);
+	}
+
+	@Override
+	public void addDireccion(String direccion, String codpostal, String localidad, int idprovincia, int idpersona) {
+		// TODO Auto-generated method stub
+		personaDAO.creoDireccion(direccion, codpostal, localidad, idprovincia, idpersona);
+	}
+
+	@Override
+	public String tedoyNombreLocalidad(int idprovincia) {
+		// TODO Auto-generated method stub
+		return personaDAO.nombreProvincia(idprovincia);
+	}
+
+	@Override
+	public List<Persona> listaPorBusqueda(String nombre) {
+		
+		return personaDAO.busquedaPorPalabra(nombre);
 	}
 
 	

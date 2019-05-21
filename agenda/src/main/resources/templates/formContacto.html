@@ -9,6 +9,11 @@
 <body>
 
 <div th:replace="fragments/topnav :: navbar"></div>
+
+	<div class="alert alert-success text-center" th:if="${msg_anadido != null}" th:text="${msg_anadido}"></div>
+  	<div class="alert alert-warning text-center" th:if="${msg_actualizado != null}" th:text="${msg_actualizado}"></div>
+	<div class="alert alert-danger text-center" th:if="${msg_borrado != null}" th:text="${msg_borrado}"></div>
+
 	
 	<div class="container">
 		<h1>Formulario Contacto</h1>
@@ -16,7 +21,7 @@
 			<div class="form-group">
 				<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre completo">
 				
-				
+
 			</div>
 			
 			<div class="form-group">
@@ -33,7 +38,11 @@
 				
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="text" name="telefono" id="telefono" placeholder="Introduce tu direccion">
+				<input class="form-control" type="text" name="direccion" id="direccion" placeholder="Introduce tu direccion">
+				
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="codpostal" id="codpostal" placeholder="Introduce el codigo postal">
 				
 			</div>
 			
@@ -43,12 +52,12 @@
 			</div>
 			<div class="form-group">
 				<h6>Introduzca su fecha de nacimiento </h6>
-				<input class="form-control" type="date" name="fecha" id="fecha">
+				<input class="form-control" type="text" name="fecha" id="fecha">
 				
 			</div>
 				<div class="form-group">
 				<h6>ELIJA LA PROVINCIA </h6>
-					<select name="pro"> 
+					<select name="provinciaEscogida"> 
                          <option value=""> -- </option>
                            <option th:each="country : ${countries}"
                            th:value="${country.idprovincia}" 
