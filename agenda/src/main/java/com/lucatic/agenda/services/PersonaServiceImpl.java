@@ -123,6 +123,12 @@ public class PersonaServiceImpl implements PersonaService{
 		return personaDAO.nombreProvincia(idprovincia);
 	}
 
+	@Override
+	public List<Persona> listaPorBusqueda(String nombre) {
+		
+		return personaDAO.busquedaPorPalabra(nombre);
+	}
+
 	
 
 	

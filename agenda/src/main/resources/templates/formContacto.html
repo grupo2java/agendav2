@@ -9,6 +9,11 @@
 <body>
 
 <div th:replace="fragments/topnav :: navbar"></div>
+
+	<div class="alert alert-success text-center" th:if="${msg_anadido != null}" th:text="${msg_anadido}"></div>
+  	<div class="alert alert-warning text-center" th:if="${msg_actualizado != null}" th:text="${msg_actualizado}"></div>
+	<div class="alert alert-danger text-center" th:if="${msg_borrado != null}" th:text="${msg_borrado}"></div>
+
 	
 	<div class="container">
 		<h1>Formulario Contacto</h1>

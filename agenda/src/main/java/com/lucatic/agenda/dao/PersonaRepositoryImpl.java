@@ -52,16 +52,15 @@ public class PersonaRepositoryImpl implements PersonaRepositoryCustom {
 	}
 
 	@Override
-	public List<Persona> getFirstNombre(String nombre) {
-		// TODO Auto-generated method stub
+	public List<Persona> busquedaPorPalabra(String palabraBusqueda) {
 		
-		/*
-		 * Query query = entityManager.createNativeQuery("SELECT em.* FROM spring_data_jpa_example.username as em " +
-                "WHERE em.username LIKE ?", User.class);
-        query.setParameter(1, username + "%");
+		
+		Query query = entityManager.createNativeQuery("SELECT p.* FROM agenda_mini.persona as p " +
+                "WHERE p.nombre LIKE ?", Persona.class);
+        query.setParameter(1, palabraBusqueda + "%");
         return query.getResultList();
-		 */
-		return null;
+		
+		
 	}
 
 	@Override
