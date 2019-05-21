@@ -16,80 +16,87 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.lucatic.agenda.dao.ProvinciaRepository;
 import com.lucatic.agenda.model.Provincia;
 
+/*
+ * @author grupo2
+ * 
+ * @versiom 2.0
+ * 
+ * @date 20/05/2019
+ * 
+ * @description controlador que realiza las tareas de provincia
+ */
 
 @Controller
 public class ProvinciaController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	ProvinciaRepository provinciaRepository;
-	
+
 	@GetMapping("/listarProvincias")
 	public String ProvinciaLista(Model model) {
 		logger.info("--Lista de provincias");
-		model.addAttribute("provincias",provinciaRepository.findAll());
+		model.addAttribute("provincias", provinciaRepository.findAll());
 		return "listaProvincias";
 	}
-	
+
 	@GetMapping("/index")
 	public String index(Model model) {
 		logger.info("--Lista de provincias");
-		
+
 		return "index";
 	}
-	
+
 	@GetMapping("/nuevaProvincia")
 	public String provinciaForm(Model model) {
 		logger.info("--Entrando en formulario");
-		model.addAttribute("provincia",new Provincia());
+		model.addAttribute("provincia", new Provincia());
 		return "provinciaForm";
 	}
-	
+
 	@PostMapping("/nuevaProvinciaADD")
-	public String enviarProvin(@RequestParam(value="user",required=false) String nombrePronvincia
-   		 ,Model model, RedirectAttributes attributes) {
+	public String enviarProvin(@RequestParam(value = "user", required = false) String nombrePronvincia, Model model,
+			RedirectAttributes attributes) {
 		logger.info("Guardando provincia");
 		provinciaRepository.save(new Provincia(nombrePronvincia));
-		
+
 		attributes.addFlashAttribute("msg_anadido", "La provincia ha sido añadida");
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/borrarProvincia/{id}")
 	public String deleteProvincia(@PathVariable("id") Integer id, RedirectAttributes attributes) {
-		
+
 		provinciaRepository.deleteById(id);
-		attributes.addFlashAttribute("msg_borrado","La provincia ha sido borrado");
+		attributes.addFlashAttribute("msg_borrado", "La provincia ha sido borrado");
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/updateProvincia/{id}")
-	public String actualizarProvincia(@PathVariable("id") Integer id, Model model ) {
+	public String actualizarProvincia(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("provincia", provinciaRepository.findById(id));
 		return "actualizarProvincia";
 	}
-	
+
 	@PostMapping("/guardaProvincia")
 	public String guardaActualizarProvincia(@ModelAttribute Provincia provincia) {
-		String prov=provincia.getProvincia();
-		int ifr=provincia.getIdprovincia();
-		System.out.println("NOMBRE DE LA PRONVINCIA"+prov+" Y LA ID DE PROVINCIA "+ifr);
-		//attributes.addFlashAttribute("msg_actualizado", "La provincia ha sido actualizado");
+		String prov = provincia.getProvincia();
+		int ifr = provincia.getIdprovincia();
+		System.out.println("NOMBRE DE LA PRONVINCIA" + prov + " Y LA ID DE PROVINCIA " + ifr);
+		// attributes.addFlashAttribute("msg_actualizado", "La provincia ha sido
+		// actualizado");
 		return "redirect:/";
 	}
-	
+
 	/*
-	 * @PostMapping("/actualizar")
-	public String guardarActuali(@Valid Particular particular, BindingResult bindingResult, RedirectAttributes attributes) {
-		if (bindingResult.hasErrors()) {
-			System.out.println("Error en validacion: " + bindingResult.getAllErrors());
-			return "actualizarParticular";
-		}
-		particularRepository.save(particular);
-		attributes.addFlashAttribute("msg_actualizado", "El particular ha sido actualizado");
-		return "redirect:/";
-	}
+	 * @PostMapping("/actualizar") public String guardarActuali(@Valid Particular
+	 * particular, BindingResult bindingResult, RedirectAttributes attributes) { if
+	 * (bindingResult.hasErrors()) { System.out.println("Error en validacion: " +
+	 * bindingResult.getAllErrors()); return "actualizarParticular"; }
+	 * particularRepository.save(particular);
+	 * attributes.addFlashAttribute("msg_actualizado",
+	 * "El particular ha sido actualizado"); return "redirect:/"; }
 	 */
-	
+
 }
