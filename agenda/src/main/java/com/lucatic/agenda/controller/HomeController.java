@@ -76,16 +76,13 @@ public class HomeController {
 		System.out.println(pers.getIdpersona()+pers.getNombre());
 		
 		int valorID=persoService.teVoyadarIdContacto(pers.getNombre(),pers.getDni());
-		System.out.println("telefono: "+tel);
-		System.out.println("muestra id : "+valorID);
-		System.out.println("muestra direccion : "+dir);
-		System.out.println("muestra codigo postal : "+codP);
-		System.out.println("provincia elegida"+provin);
+		
 		
 		String nombreProvincia=persoService.tedoyNombreLocalidad(provin);
 		
 		persoService.addtelefono(tel, valorID);
 		persoService.addDireccion(dir, codP, nombreProvincia, provin, valorID);
+		attributes.addFlashAttribute("msg_anadido","El contacto ha sido añadido");
 		return new ModelAndView("redirect:/");
 	}
 	
@@ -126,6 +123,15 @@ public class HomeController {
 		model.addAttribute("updateContacto", persoService.getEmployeeById(id));
 		return "updateContacto";
 	}
+	
+	@RequestMapping("/buscar")
+	public String buscarContactos(@RequestParam(value="busqueda",required=false) String bus, ModelMap model ) {
+		System.out.println("el contacto a buscar es: "+bus);
+		model.addAttribute("pers", persoService.listaPorBusqueda(bus));
+		return "mostrarContacto";
+	}
+	
+	
 	
 	
 	

@@ -11,6 +11,7 @@ public interface PersonaService {
 
 
 	public List<Persona> list();
+	public List<Persona> listaPorBusqueda(String nombre);
 	public void update(Persona perso);
 	public void add(Persona perso);
 	public void delete(int id);

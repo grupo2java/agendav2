@@ -11,7 +11,7 @@ import com.lucatic.agenda.model.Telefono;
 public interface PersonaRepositoryCustom {
 
 	
-	List<Persona> getFirstNombre(String nombre);
+	List<Persona> busquedaPorPalabra(String palabraBusqueda);
 	Persona damePersona(int id);
 	List<Telefono> dameTelefonos(int id);
 	List<Direccion> dameDirecciones(int id);
